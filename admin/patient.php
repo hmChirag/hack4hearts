@@ -135,7 +135,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_prescription'])
                 <tr>
                    <td colspan="4">
                        <center>
-                        <div class="abc scroll">
+                        <div class="abc scroll" style="height: 335px;">
                         <table width="93%" class="sub-table scrolldown" style="border-spacing:0;">
                         <thead>
                         <tr>
@@ -201,7 +201,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_prescription'])
             </table>
             
             <!-- Form to send prescription -->
-            <div style="margin-top: 30px; text-align: center;">
+            <div style="text-align: center;">
                 <form action="" method="post">
                     <label for="patient_email">Select Patient Email:</label>
                     <select name="patient_email" id="patient_email" required>
