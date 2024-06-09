@@ -148,60 +148,101 @@
                     <table class="filter-container doctor-header patient-header" style="border: none;width:95%" border="0" >
                     <tr>
                         <td >
-                            <h3>Welcome!</h3>
                             <h1><?php echo $username  ?>.</h1>
-                            <p>Haven't any idea about doctors? no problem let's jumping to 
-                                <a href="doctors.php" class="non-style-link"><b>"All Doctors"</b></a> section or 
-                                <a href="schedule.php" class="non-style-link"><b>"Sessions"</b> </a><br>
-                                Track your past and future appointments history.<br>Also find out the expected arrival time of your doctor or medical consultant.<br><br>
-                            </p>
                             
-                            <h3>Get your audio assistence here</h3>
-
-
-
+                            <h3>ಧ್ವನಿ ನೀಡಲು ನಿಮ್ಮ ಆಡಿಯೊ ಸಹಾಯವನ್ನು ಇಲ್ಲಿ ಪಡೆಯಿರಿ</h3>
+                            
 
                             <?php
-                                if(isset($_POST['submit']) && $_POST['submit'] == 'Convert to speech') {
-                                    // Take the input from textarea
-                                    $text = isset($_POST['prescription']) ? $_POST['prescription'] : '';
+                            if(isset($_POST['submit']) && $_POST['submit'] == 'Convert to speech') {
+    // Take the input from textarea
+    $text = isset($_POST['prescription'])? $_POST['prescription'] : '';
 
-                                    // Convert special characters to HTML entities to prevent XSS attacks
-                                    $text = htmlspecialchars($text);
+    // Convert special characters to HTML entities to prevent XSS attacks
+    $text = htmlspecialchars($text);
 
-                                    // URL encode the text
-                                    $text = rawurlencode($text);
+    
+}
+?>
 
-                                    // The language code for English (India) is 'en-IN', you can change it as needed
-                                    $languageCode = 'en-IN';
+<!-- HTML form for input -->
+<form method="post">
+    <textarea name="prescription" id="prescription" rows="4" cols="50" required><?php echo isset($userfetch["prescription"])? $userfetch["prescription"] : '';?></textarea>
+    <br><br/>
+    <input name="translateBtn" type="submit" value="ಕನ್ನಡಕ್ಕೆ ಪರಿವರ್ತಿಸಿ" class="login-btn btn-primary btn" style="padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;margin-bottom:10px"/>
+</form>
 
-                                    // Construct the Google Translate TTS API URL
-                                    $googleApiUrl = "https://translate.google.com/translate_tts?ie=UTF-8&client=gtx&q={$text}&tl={$languageCode}";
 
-                                    // Get the content from the Google Translate TTS API
-                                    $audioContent = file_get_contents($googleApiUrl);
 
-                                    // Encode the content to base64 to embed in the audio tag
-                                    $base64Audio = base64_encode($audioContent);
 
-                                    // Create the audio player HTML
-                                    $audioPlayer = "<audio controls='controls' autoplay><source src='data:audio/mpeg;base64,{$base64Audio}'></audio>";
 
-                                    // Echo the audio player
-                                    echo $audioPlayer;
-                                }
-                                ?>
-                                
-                                
-                                <!-- HTML form for input -->
-                                <form method="post">
-                                
-                                    <textarea name="prescription" id="prescription" rows="4" cols="50" required><?php echo isset($userfetch["prescription"]) ? $userfetch["prescription"] : ''; ?></textarea>
-                                    <br><br/>
-                                    <input name="submit" type="submit" value="Convert to speech" class="login-btn btn-primary btn" style="padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;margin-bottom:10px"/>
-                                </form>
+<?php
+// Initialize variables
+$prescription = isset($_POST['prescription']) ? $_POST['prescription'] : '';
+$toTxt = isset($_POST['toTxt']) ? $_POST['toTxt'] : '';
+$translateFrom = isset($_POST['translateFrom']) ? $_POST['translateFrom'] : 'en-GB'; // Default: English (UK)
+$translateTo = isset($_POST['translateTo']) ? $_POST['translateTo'] : 'kn-IN';
 
-                            
+if (isset($_POST['translateBtn'])) {
+    // Translate text using an external service (e.g., Google Translate API)
+    $apiUrl = "https://api.mymemory.translated.net/get?q=" . urlencode($prescription) . "&langpair={$translateFrom}|{$translateTo}";
+    $response = file_get_contents($apiUrl);
+    $data = json_decode($response, true);
+    $translatedText = $data['responseData']['translatedText'];
+
+    // Set the translated text in the output textarea
+    $toTxt = $translatedText;
+
+    // Speak the translated text (optional)
+    // Note: Text-to-speech functionality requires additional setup (e.g., using a TTS library or service)
+    // You can explore PHP TTS libraries or APIs for this purpose.
+}
+?>
+
+<h3>ಧ್ವನಿಗೆ ಪರಿವರ್ತಿಸಿ</h3>
+<form method="post">
+    <textarea name="toTxt" id="toTxt" rows="4" cols="50" required><?php echo htmlspecialchars($toTxt); ?></textarea>
+    <br><br/>
+    <input name="submit" type="submit" value="Convert to speech" class="login-btn btn-primary btn" style="padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;margin-bottom:10px"/>
+</form>
+
+
+
+
+
+
+<?php
+if(isset($_POST['submit']) && $_POST['submit'] == 'Convert to speech') {
+    // Take the input from textarea
+    $toTxt = isset($_POST['toTxt'])? $_POST['toTxt'] : '';
+
+    // Convert special characters to HTML entities to prevent XSS attacks
+    $toTxt = htmlspecialchars($toTxt);
+
+    // URL encode the text
+    $toTxt = rawurlencode($toTxt);
+
+    // The language code for Kannada is 'kn', you can change it as needed
+    $languageCode = 'kn-IN';
+
+    // Construct the Google Translate TTS API URL
+    $googleApiUrl = "https://translate.google.com/translate_tts?ie=UTF-8&client=gtx&q={$toTxt}&tl={$languageCode}";
+
+    // Get the content from the Google Translate TTS API
+    $audioContent = file_get_contents($googleApiUrl);
+
+    // Encode the content to base64 to embed in the audio tag
+    $base64Audio = base64_encode($audioContent);
+
+    // Create the audio player HTML
+    $audioPlayer = "<audio controls='controls' autoplay><source src='data:audio/mpeg;base64,{$base64Audio}'></audio>";
+
+    // Echo the audio player
+    echo $audioPlayer;
+}
+?>
+
+<!-- HTML form for input -->
 
 
 
