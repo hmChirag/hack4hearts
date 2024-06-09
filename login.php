@@ -8,16 +8,10 @@
     <link rel="stylesheet" href="css/main.css">  
     <link rel="stylesheet" href="css/login.css">
         
-    <title>Login</title>
-
-    
-    
+    <title>Login</title>    
 </head>
 <body>
     <?php
-
-    //learn from w3schools.com
-    //Unset all the server side variables
 
     session_start();
 
@@ -33,9 +27,6 @@
 
     //import database
     include("connection.php");
-
-    
-
 
 
     if($_POST){
@@ -115,9 +106,6 @@
     ?>
 
 
-
-
-
     <center>
     <div class="container">
         <table border="0" style="margin: 0;padding: 0;width: 60%;">
@@ -175,11 +163,7 @@
                     <a href="signup.php" class="hover-link1 non-style-link">Sign Up</a>
                     <br><br><br>
                 </td>
-            </tr>
-                        
-                        
-    
-                        
+            </tr>                        
                     </form>
         </table>
 
