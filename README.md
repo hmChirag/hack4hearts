@@ -33,20 +33,17 @@ Clone the repository:
 
 sh
 Copy code
-git clone <repository-url>
-cd hospital-management-system
-Set up the database:
+git clone <[repository-url](https://github.com/hmChirag/hack4hearts/edit/main/)>
+cd foldername
 
-Import the provided SQL file into your MySQL database.
-Configure your database connection in the project.
-Configure API keys:
-
-Obtain API keys for Google Translate and Google Cloud Text-to-Speech.
-Add the API keys to the respective configuration files.
-Start the server:
-
-Set up a local server (e.g., XAMPP, WAMP) and place the project files in the server's root directory.
-Access the application via http://localhost/the_saved_name_of_your_folder.
+HOW TO GET STARTED?
+1.Open your XAMPP Control Panel and start Apache and MySQL.
+2.Extract the downloaded source code zip file.
+3.Copy the extracted source code folder and paste it into the XAMPP's "htdocs" directory.
+4.Browse the PHPMyAdmin in a browser. i.e. http://localhost/phpmyadmin
+5.Create a new database naming edoc.
+6.Import the provided SQL file. The file is known as SQL_Database_edoc.sql located inside the source code root folder.
+7.Browse the  Doctor's Appointment System in a browser. i.e. http://localhost/edoc-echanneling-main/.
 Usage
 Login:
 Admin:admin@edoc.com
