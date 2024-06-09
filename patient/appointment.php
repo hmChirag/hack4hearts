@@ -21,8 +21,6 @@
 <body>
     <?php
 
-    //learn from w3schools.com
-
     session_start();
 
     if(isset($_SESSION["user"])){
@@ -295,47 +293,6 @@
                                         }
                                         echo "</tr>";
                            
-                                // for ( $x=0; $x<$result->num_rows;$x++){
-                                //     $row=$result->fetch_assoc();
-                                //     $appoid=$row["appoid"];
-                                //     $scheduleid=$row["scheduleid"];
-                                //     $title=$row["title"];
-                                //     $docname=$row["docname"];
-                                //     $scheduledate=$row["scheduledate"];
-                                //     $scheduletime=$row["scheduletime"];
-                                //     $pname=$row["pname"];
-                                //     
-                                //     
-                                //     echo '<tr >
-                                //         <td style="font-weight:600;"> &nbsp;'.
-                                        
-                                //         substr($pname,0,25)
-                                //         .'</td >
-                                //         <td style="text-align:center;font-size:23px;font-weight:500; color: var(--btnnicetext);">
-                                //         '.$apponum.'
-                                        
-                                //         </td>
-                                //         <td>
-                                //         '.substr($title,0,15).'
-                                //         </td>
-                                //         <td style="text-align:center;;">
-                                //             '.substr($scheduledate,0,10).' @'.substr($scheduletime,0,5).'
-                                //         </td>
-                                        
-                                //         <td style="text-align:center;">
-                                //             '.$appodate.'
-                                //         </td>
-
-                                //         <td>
-                                //         <div style="display:flex;justify-content: center;">
-                                        
-                                //         <!--<a href="?action=view&id='.$appoid.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-view"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">View</font></button></a>
-                                //        &nbsp;&nbsp;&nbsp;-->
-                                //        <a href="?action=drop&id='.$appoid.'&name='.$pname.'&session='.$title.'&apponum='.$apponum.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-delete"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">Cancel</font></button></a>
-                                //        &nbsp;&nbsp;&nbsp;</div>
-                                //         </td>
-                                //     </tr>';
-                                    
                                 }
                             }
                                  
