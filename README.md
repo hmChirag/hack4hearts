@@ -1,6 +1,9 @@
 CardioMinds
 This project is a comprehensive application designed to streamline the management processes within a hospital. This system features three main dashboards for different types of users: Admin, Doctor, and Patient. Each user can log in to their respective accounts using their email and password. The system is designed to ensure efficient management of patient prescriptions, medication reminders, and more.
 
+Projecct Demo Video:
+https://drive.google.com/file/d/1kfgXt9vrP4IoRuq1dFnmOMgo0NxWmxRe/view?usp=sharing
+
 Features
 Admin Dashboard
 Manage Doctors: Add, update, and delete doctor profiles.
